@@ -44,3 +44,190 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+-----------------------------------------------------------------------------------------------------------------
+
+# UI Component Library
+
+## Project Overview
+This is a **React-based UI Component Library** built using **TypeScript, Styled-Components, and Storybook**. It includes a collection of reusable UI components with **testing, linting, and Docker support** for easy deployment.
+
+---
+
+## Installation
+### Prerequisites
+Before you begin, ensure you have the following installed:
+- **Node.js v18+**
+- **npm v8+** or **yarn**
+- **Docker (for containerization)**
+
+### Install Dependencies
+
+npm install
+
+
+---
+
+## Project Setup
+1. **Clone the repository:**
+
+   git clone https://github.com/your-repo/my-component-library.git
+
+2. **Navigate to the project folder:**
+
+   cd my-component-library
+
+3. **Install dependencies:**
+
+   npm install
+
+4. **Run the project locally:**
+
+   npm start
+
+
+---
+
+## Prettier & ESLint
+### Install Prettier & ESLint
+This project uses **Prettier** for formatting and **ESLint** for linting.
+
+npm install --save-dev prettier eslint eslint-config-prettier eslint-plugin-prettier
+
+
+### ESLint Configuration (`eslint.config.mjs`)
+```js
+export default [
+  { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"] },
+  { languageOptions: { globals: globals.browser } },
+  pluginJs.configs.recommended,
+  ...tseslint.configs.recommended,
+  pluginReact.configs.flat.recommended,
+  {
+    settings: {
+      react: {
+        version: "detect",
+      },
+    },
+  },
+];
+
+```
+
+### Run ESLint
+
+npm run lint
+
+
+---
+
+## Testing with Jest & React Testing Library
+
+This project includes unit and component testing with **Jest** and **React Testing Library**.
+
+### Install Testing Dependencies
+
+npm install --save-dev jest @testing-library/react @testing-library/jest-dom
+
+
+### Run Tests
+
+npm test
+
+
+### Run Tests in Watch Mode
+
+npm test -- --watch
+
+
+---
+
+## Storybook
+Storybook is used to develop and showcase components in isolation.
+
+### Install Storybook
+
+npx storybook init
+
+
+### Run Storybook Locally
+
+npm run storybook
+
+
+### Build Storybook
+
+npm run build-storybook
+
+
+---
+
+## Husky - Git Hooks
+Husky helps enforce code quality by running pre-commit checks.
+
+### Install Husky
+
+npx husky-init && npm install
+
+
+### Enable Pre-Commit Hook
+
+npx husky add .husky/pre-commit "npm run lint && npm test"
+
+
+### Verify Husky Hooks
+
+cat .husky/pre-commit
+
+
+---
+
+## Docker Deployment
+This project includes a **Dockerfile** for containerization and deployment.
+
+### Build Docker Image
+
+docker build -t dogra_rakshita_coding_assignment13 .
+
+
+### Run Docker Container
+
+docker run -d -p 8018:8018 --name dogra_rakshita_coding_assignment13 dogra_rakshita_coding_assignment13
+
+
+### Check Running Containers
+
+docker ps
+
+
+### Stop & Remove Container
+
+docker stop dogra_rakshita_coding_assignment13
+docker rm dogra_rakshita_coding_assignment13
+
+
+---
+
+## Troubleshooting
+**Docker Error: Container Name Already Exists**
+
+docker rm -f dogra_rakshita_coding_assignment13
+
+
+**Storybook Build Issues**
+- Ensure dependencies are installed correctly:
+
+  rm -rf node_modules package-lock.json
+  npm install
+
+- Try rebuilding:
+
+  npm run build-storybook
+
+
+---
+
+## Author
+**Rakshita Dogra**  
+Full Stack Developer  
+
