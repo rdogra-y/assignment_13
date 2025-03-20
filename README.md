@@ -64,53 +64,35 @@ Before you begin, ensure you have the following installed:
 ### Install Dependencies
 
 npm install
+```
 
+### Add Husky for Pre-commit Hooks
 
----
+```sh
+npm install husky --save-dev
+npx husky install
+npx husky add .husky/pre-commit "prettier --write . && eslint . --fix && npm test"
+```
 
-## Project Setup
-1. **Clone the repository:**
+### Configure ESLint & Prettier
 
-   git clone https://github.com/your-repo/my-component-library.git
+```sh
+npx eslint --init
 
-2. **Navigate to the project folder:**
+```
 
-   cd my-component-library
+### Edit package.json to include:
 
-3. **Install dependencies:**
-
-   npm install
-
-4. **Run the project locally:**
-
-   npm start
-
-
----
-
-## Prettier & ESLint
-### Install Prettier & ESLint
-This project uses **Prettier** for formatting and **ESLint** for linting.
-
-npm install --save-dev prettier eslint eslint-config-prettier eslint-plugin-prettier
-
-
-### ESLint Configuration (`eslint.config.mjs`)
-```js
-export default [
-  { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"] },
-  { languageOptions: { globals: globals.browser } },
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
-  {
-    settings: {
-      react: {
-        version: "detect",
-      },
-    },
-  },
-];
+```json
+"scripts": {
+  "lint": "eslint src/",
+  "format:check": "prettier --check ."
+},
+"husky": {
+  "hooks": {
+    "pre-commit": "prettier --write . && eslint . --fix && npm test"
+  }
+}
 
 ```
 
